@@ -4,7 +4,7 @@ namespace CrimeAnalyzer
 {
     public class CrimeStat
     {
-        // CSV Inputs Year,Population,Violent Crime,Murder,Rape,Robbery,Aggravated Assault,Property Crime,Burglary,Theft,Motor Vehicle Theft
+        // CSV Inputs: Year,Population,Violent Crime,Murder,Rape,Robbery,Aggravated Assault,Property Crime,Burglary,Theft,Motor Vehicle Theft
         private int year;
         private int population;
         private int violentCrime;
@@ -38,6 +38,9 @@ namespace CrimeAnalyzer
         public void setYear(int input) {
             if(input < 1970) {
                 throw new ArgumentOutOfRangeException("Year cannot be before Jan 1, 1970. See https://en.wikipedia.org/wiki/Unix_time ");
+            }
+            else if(input > DateTime.Now.Year) {
+                throw new ArgumentOutOfRangeException("If you know what crimes will happen in the future, either you are an accomplice or you are psychic. Either way, just no.");
             }
 
             this.year = input;
