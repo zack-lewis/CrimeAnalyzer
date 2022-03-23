@@ -37,10 +37,10 @@ namespace CrimeAnalyzer
 
         public void setYear(int input) {
             if(input < 1970) {
-                throw new ArgumentOutOfRangeException("Year cannot be before Jan 1, 1970. See https://en.wikipedia.org/wiki/Unix_time ");
+                throw new ArgumentOutOfRangeException("year", "Year cannot be before Jan 1, 1970. See https://en.wikipedia.org/wiki/Unix_time ");
             }
             else if(input > DateTime.Now.Year) {
-                throw new ArgumentOutOfRangeException("If you know what crimes will happen in the future, either you are an accomplice or you are psychic. Either way, just no.");
+                throw new ArgumentOutOfRangeException("year", "If you know what crimes will happen in the future, either you are an accomplice or you are psychic. Either way, just no.");
             }
 
             this.year = input;
@@ -52,7 +52,7 @@ namespace CrimeAnalyzer
 
         public void setPopulation(int input) {
             if(input <= 0) {
-                throw new ArgumentOutOfRangeException("Population cannot be 0 or negative");
+                throw new ArgumentOutOfRangeException("population", "Population cannot be 0 or negative");
             }
 
             this.population = input;
@@ -64,7 +64,7 @@ namespace CrimeAnalyzer
 
         public void setViolentCrime(int input) {
             if(input < 0) {
-                throw new ArgumentOutOfRangeException("Violent Crime cannot be negative");
+                throw new ArgumentOutOfRangeException("violentCrime","Violent Crime cannot be negative");
             }
 
             this.violentCrime = input;
@@ -76,7 +76,7 @@ namespace CrimeAnalyzer
 
         public void setMurder(int input) {
             if(input < 0) {
-                throw new ArgumentOutOfRangeException("Murder cannot be negative");
+                throw new ArgumentOutOfRangeException("murder","Murder cannot be negative");
             }
 
             this.murder = input;
@@ -88,7 +88,7 @@ namespace CrimeAnalyzer
 
         public void setRape(int input) {
             if(input < 0) {
-                throw new ArgumentOutOfRangeException("Rape cannot be negative");
+                throw new ArgumentOutOfRangeException("rape","Rape cannot be negative");
             }
 
             this.rape = input;
@@ -100,7 +100,7 @@ namespace CrimeAnalyzer
 
         public void setRobbery(int input) {
             if(input < 0) {
-                throw new ArgumentOutOfRangeException("Robbery cannot be negative");
+                throw new ArgumentOutOfRangeException("robbery","Robbery cannot be negative");
             }
 
             this.robbery = input;
@@ -112,7 +112,7 @@ namespace CrimeAnalyzer
 
         public void setAggravatedAssault(int input) {
             if(input < 0) {
-                throw new ArgumentOutOfRangeException("Aggravated Assault cannot be negative");
+                throw new ArgumentOutOfRangeException("aggravatedAssault","Aggravated Assault cannot be negative");
             }
 
             this.aggravatedAssault = input;
@@ -124,7 +124,7 @@ namespace CrimeAnalyzer
 
         public void setPropertyCrime(int input) {
             if(input < 0) {
-                throw new ArgumentOutOfRangeException("Property Crime cannot be negative");
+                throw new ArgumentOutOfRangeException("propertyCrime","Property Crime cannot be negative");
             }
 
             this.propertyCrime = input;
@@ -136,7 +136,7 @@ namespace CrimeAnalyzer
 
         public void setBurglary(int input) {
             if(input < 0) {
-                throw new ArgumentOutOfRangeException("Burglary cannot be 0 or negative");
+                throw new ArgumentOutOfRangeException("burglary","Burglary cannot be 0 or negative");
             }
 
             this.burglary = input;
@@ -148,7 +148,7 @@ namespace CrimeAnalyzer
 
         public void setTheft(int input) {
             if(input < 0) {
-                throw new ArgumentOutOfRangeException("Theft cannot be negative");
+                throw new ArgumentOutOfRangeException("theft","Theft cannot be negative");
             }
 
             this.theft = input;
@@ -160,7 +160,7 @@ namespace CrimeAnalyzer
 
         public void setMotorVehicleTheft(int input) {
             if(input < 0) {
-                throw new ArgumentOutOfRangeException("MotorVehicleTheft cannot be negative");
+                throw new ArgumentOutOfRangeException("motorVehicleTheft","MotorVehicleTheft cannot be negative");
             }
 
             this.motorVehicleTheft = input;

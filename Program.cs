@@ -13,8 +13,9 @@ namespace CrimeAnalyzer
         static void Main(string[] args)
         {
             // Debug params
-            bool debug = false;
+            bool debug = true;
             string debug_file = "CrimeData.csv";
+            //string debug_file = "Error3.csv";
             string debug_report = "Report.txt";
 
             // check args. If not 2, return help message and exit. 
@@ -45,13 +46,24 @@ namespace CrimeAnalyzer
             try {
                 stats = DataLoader.getStatsList(in_file);
             }
+            catch(ArgumentOutOfRangeException ex) {
+                Logger.logger($"Error: { ex.Message }");
+            }
             catch(FileNotFoundException ex) {
                 Logger.logger($"Cannot load file: { ex.Message }");
                 return;
             }
+            catch(InvalidOperationException) {
+                Logger.logger("It appears the input file was empty");
+            }
             catch(Exception ex) {
                 Logger.logger($"Otherwise unhandled error ({ ex.GetType().Name }): { ex.Message }");
                 //Logger.logger(ex.StackTrace);
+            }
+
+            if(stats == null || stats.Count() <= 0) {
+                Logger.logger("No records exist, Report will not be generated");
+                return;
             }
 
             // Try writing the report (console for debug)
