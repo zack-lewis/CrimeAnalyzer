@@ -7,6 +7,7 @@ namespace CrimeAnalyzer
 {
     class Program
     {
+        
         static List<CrimeStat> stats = null;
 
         static void Main(string[] args)
@@ -164,12 +165,10 @@ namespace CrimeAnalyzer
         }
 
         public static string getViolentCrimePerCapita2010() {
-            List<CrimeStat> record2010 = (from s in stats where(s.getYear() == 2010) select s).ToList();
-
-            double violentCrime2010 = record2010[0].getViolentCrime();
-            double population2010 = record2010[0].getPopulation();
-            int year2010 = record2010[0].getYear(); // This is a dummy check
-            double vcPerCapita2010 = violentCrime2010/population2010;
+            float violentCrime2010 = (from s in stats where(s.getYear() == 2010) select s).FirstOrDefault().getViolentCrime();
+            float population2010 = (from s in stats where(s.getYear() == 2010) select s).FirstOrDefault().getPopulation();
+            int year2010 = (from s in stats where(s.getYear() == 2010) select s).FirstOrDefault().getYear(); // This is a dummy check
+            float vcPerCapita2010 = violentCrime2010/population2010;
         
             string output = $"Violent Crime per capita rate ({ year2010 }): { vcPerCapita2010 }";
 
@@ -177,51 +176,47 @@ namespace CrimeAnalyzer
         }
 
         public static string getMurderAverageAll() {
-            List<int> murderAllYears = (from s in stats
-                                        select s.getMurder()).ToList<int>();
-            double murderAvgAll = murderAllYears.Average();
+            double murderAvgAll = (from s in stats
+                                        select s.getMurder()).Average();
             string output = $"Average murder per year (all years): { murderAvgAll }";
 
             return output;
         }
 
         public static string getMurderAverage1994to1997() {
-            List<int> murders1994to1997 = (from s in stats where (s.getYear() >= 1994 && s.getYear() <= 1997)
-                                        select s.getMurder()).ToList<int>();
-            double murderAvg1994to1997 = murders1994to1997.Average();
+            double murderAvg1994to1997 = (from s in stats where (s.getYear() >= 1994 && s.getYear() <= 1997)
+                                        select s.getMurder()).Average();
             string output = $"Average murder per year (1994-1997): { murderAvg1994to1997 }";
 
             return output;
         }
 
         public static string getMurderAverage2010to2013() {
-            List<int> murders2010to2013 = (from s in stats where (s.getYear() >= 2010 && s.getYear() <= 2013)
-                                        select s.getMurder()).ToList<int>();
-            double murderAvg2010to2013 = murders2010to2013.Average();
+            double murderAvg2010to2013 = (from s in stats where (s.getYear() >= 2010 && s.getYear() <= 2013)
+                                        select s.getMurder()).Average();
             string output = $"Average murder per year (2010-2013): { murderAvg2010to2013 }";
 
             return output;
         }
 
         public static string getMinTheft1999to2004() {
-            List<int> theft1999to2004 = (from s in stats where(s.getYear() >=1999 && s.getYear() <=2004) select s.getTheft()).ToList<int>();
-            int minTheft1999to2004 = theft1999to2004.Min();
+            int minTheft1999to2004 = (from s in stats where(s.getYear() >=1999 && s.getYear() <=2004) select s.getTheft()).Min();
             string output = $"Minimum thefts per year (1999-2004): { minTheft1999to2004 }";
 
             return output;
         }
 
         public static string getMaxTheft1999to2004() {
-            List<int> theft1999to2004 = (from s in stats where(s.getYear() >=1999 && s.getYear() <=2004) select s.getTheft()).ToList<int>();
-            int maxTheft1999to2004 = theft1999to2004.Max();
+            int maxTheft1999to2004 = (from s in stats where(s.getYear() >=1999 && s.getYear() <=2004) select s.getTheft()).Max();
+            
             string output = $"Maximum thefts per year (1999-2004): { maxTheft1999to2004 }";
 
             return output;
         }
 
         public static string getHighestMotorVehicleTheftLine() {
-            List<int> motorVehicleTheftYearsAsc = (from s in stats orderby s.getMotorVehicleTheft() descending select s.getYear()).ToList<int>();
-            int highestMotorVehicleTheft = motorVehicleTheftYearsAsc[0];
+            int highestMotorVehicleTheft = (from s in stats orderby s.getMotorVehicleTheft() descending select s).FirstOrDefault().getYear();
+
             string output = $"Year of highest number of motor vehicle thefts: { highestMotorVehicleTheft }";
 
             return output;
