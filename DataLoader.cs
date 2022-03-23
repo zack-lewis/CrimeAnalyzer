@@ -6,9 +6,9 @@ namespace CrimeAnalyzer
 {
     public class DataLoader
     {
-        public static List<stat> getStatsList(string in_file)
+        public static List<CrimeStat> getStatsList(string in_file)
         {
-            List<stat> output = new List<stat>();
+            List<CrimeStat> output = new List<CrimeStat>();
             // Parse input file, ignore first line
             using(StreamReader in_stream = new StreamReader(in_file)){
                 string line;
@@ -24,7 +24,7 @@ namespace CrimeAnalyzer
                     string[] tempArray = line.Split(",");
 
                     try {
-                        stat tempStat = new stat(Int32.Parse(tempArray[0]),Int32.Parse(tempArray[1]),Int32.Parse(tempArray[2]),Int32.Parse(tempArray[3]),Int32.Parse(tempArray[4]),Int32.Parse(tempArray[5]),Int32.Parse(tempArray[6]),Int32.Parse(tempArray[7]),Int32.Parse(tempArray[8]),Int32.Parse(tempArray[9]),Int32.Parse(tempArray[10]));
+                        CrimeStat tempStat = new CrimeStat(Int32.Parse(tempArray[0]),Int32.Parse(tempArray[1]),Int32.Parse(tempArray[2]),Int32.Parse(tempArray[3]),Int32.Parse(tempArray[4]),Int32.Parse(tempArray[5]),Int32.Parse(tempArray[6]),Int32.Parse(tempArray[7]),Int32.Parse(tempArray[8]),Int32.Parse(tempArray[9]),Int32.Parse(tempArray[10]));
                         output.Add(tempStat);
                     }
                     catch(IndexOutOfRangeException ex) {

@@ -7,7 +7,7 @@ namespace CrimeAnalyzer
 {
     class Program
     {
-        static List<stat> stats = null;
+        static List<CrimeStat> stats = null;
 
         static void Main(string[] args)
         {
@@ -70,15 +70,15 @@ namespace CrimeAnalyzer
                 murderLT15k = murderLT15k.Remove(murderLT15k.Length - 2, 1);
 
                 //     What are the years and associated robberies per year for years where the number of robberies is greater than 500000?
-                List<stat> robberyGT500k = getRobberyGT500k();
+                List<CrimeStat> robberyGT500k = getRobberyGT500k();
                 string robberyGT500kLine = "Robberies per year > 500000: ";
-                foreach(stat s in robberyGT500k) {
+                foreach(CrimeStat s in robberyGT500k) {
                     robberyGT500kLine += $"{ s.getYear() } = { s.getRobbery() }, ";
                 }
                 robberyGT500kLine = robberyGT500kLine.Remove(robberyGT500kLine.Length - 2, 1);
 
                 //     What is the violent crime per capita rate for 2010? Per capita rate is the number of violent crimes in a year divided by the size of the population that year.
-                List<stat> record2010 = (from s in stats where(s.getYear() == 2010) select s).ToList();
+                List<CrimeStat> record2010 = (from s in stats where(s.getYear() == 2010) select s).ToList();
 
                 double violentCrime2010 = record2010[0].getViolentCrime();
                 double population2010 = record2010[0].getPopulation();
@@ -157,11 +157,11 @@ namespace CrimeAnalyzer
             }
         } // end Main
 
-        private static List<stat> getRobberyGT500k()
+        private static List<CrimeStat> getRobberyGT500k()
         {
-            List<stat> output = (from s in stats
+            List<CrimeStat> output = (from s in stats
                                     where s.getRobbery() > 500000
-                                    select s).ToList<stat>();
+                                    select s).ToList<CrimeStat>();
 
             return output;    
         }

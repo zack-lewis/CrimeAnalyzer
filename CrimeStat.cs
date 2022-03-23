@@ -2,7 +2,7 @@ using System;
 
 namespace CrimeAnalyzer
 {
-    public class stat
+    public class CrimeStat
     {
         // CSV Inputs Year,Population,Violent Crime,Murder,Rape,Robbery,Aggravated Assault,Property Crime,Burglary,Theft,Motor Vehicle Theft
         private int year;
@@ -17,10 +17,10 @@ namespace CrimeAnalyzer
         private int theft;
         private int motorVehicleTheft;
     
-        public stat(int year) : this(year,0,0,0,0,0,0,0,0,0,0) {
+        public CrimeStat(int year) : this(year,0,0,0,0,0,0,0,0,0,0) {
         }
 
-        public stat(int year, int population, int violentCrime, int murder, int rape, int robbery, int aggravatedAssault, int propertyCrime, int burglary, int theft, int motorVehicleTheft)
+        public CrimeStat(int year, int population, int violentCrime, int murder, int rape, int robbery, int aggravatedAssault, int propertyCrime, int burglary, int theft, int motorVehicleTheft)
         {
             this.setYear(year);
             this.setPopulation(population);
