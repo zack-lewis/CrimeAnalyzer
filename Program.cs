@@ -99,6 +99,12 @@ namespace CrimeAnalyzer
                     }
                 }
             }
+            catch(UnauthorizedAccessException) {
+                Logger.logger($"Unauthorized access to report file: { out_file }");
+            }
+            catch(IOException ex) {
+                Logger.logger($"IO Exception on report file: { ex.Message }");
+            }
             catch(Exception ex) {
                 Logger.logger($"Error ({ ex.GetType().Name }): { ex.Message } \n\t { ex.StackTrace }");
             }
